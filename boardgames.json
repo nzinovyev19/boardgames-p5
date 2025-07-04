@@ -1,0 +1,72 @@
+[
+  {
+    "name": "Uno",
+    "description": "",
+    "genre": ["family", "card"],
+    "games": 30,
+    "difficult": 2
+  },
+  {
+    "name": "Manchkin",
+    "description": "",
+    "genre": ["card", "eurogame"],
+    "games": 30,
+    "difficult": 6
+  },
+  {
+    "name": "Игра престолов",
+    "description": "",
+    "genre": ["strategy", "area control", "negotiation"],
+    "games": 8,
+    "difficult": 8
+  },
+  {
+    "name": "Ужас Аркхема",
+    "description": "",
+    "genre": ["cooperative", "horror", "adventure"],
+    "games": 12,
+    "difficult": 7
+  },
+  {
+    "name": "Покорение Марса",
+    "description": "",
+    "genre": ["strategy", "engine building", "eurogame"],
+    "games": 15,
+    "difficult": 8
+  },
+  {
+    "name": "Кольт Экспресс",
+    "description": "",
+    "genre": ["family", "programming", "western"],
+    "games": 20,
+    "difficult": 5
+  },
+  {
+    "name": "Битва Магов",
+    "description": "",
+    "genre": ["card", "battle", "fantasy"],
+    "games": 25,
+    "difficult": 6
+  },
+  {
+    "name": "Каркасон",
+    "description": "",
+    "genre": ["tile placement", "area control", "family"],
+    "games": 40,
+    "difficult": 4
+  },
+  {
+    "name": "Цербер",
+    "description": "",
+    "genre": ["card", "bluffing", "party"],
+    "games": 18,
+    "difficult": 3
+  },
+  {
+    "name": "Шакал",
+    "description": "",
+    "genre": ["adventure", "exploration", "pirate"],
+    "games": 22,
+    "difficult": 5
+  }
+]
