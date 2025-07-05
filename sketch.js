@@ -1,19 +1,12 @@
 let boardgames;
 
-// TODO: оформить логику для определения цвета планеты по жанру или сложности
-// fill(paletteLerp([
-//     ['white', 0],
-//     ['red', 3],
-//     ['green', 6],
-//     ['blue', 10]
-//   ], boardgame.difficult));
 // const PALITRE_COLOR_BY_GENRE = {
 // }
 
 const ROWS = 3;
 const COLUMNS = 3;
 
-const STROKE_OF_PLANETS = 10;
+const STROKE_OF_PLANETS = 5;
 const PADDING_TOP = 150;
 const PADDING_LEFT = 100;
 
@@ -43,7 +36,11 @@ function draw() {
     const positionByVerticaly = Math.floor(i / ROWS) * gapInColumn + PADDING_TOP;
 
 
-    fill("yellow")
+    fill(paletteLerp([
+      ['white', 0],
+      ['orange', 5],
+      ['red', 10]
+    ], boardgame.difficult));
     stroke("orange");
     strokeWeight(STROKE_OF_PLANETS);
     circle(positionByHorizontal, positionByVerticaly, boardgame.games);
