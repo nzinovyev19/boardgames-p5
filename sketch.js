@@ -36,6 +36,7 @@ function draw() {
     const positionByVerticaly = Math.floor(i / ROWS) * gapInColumn + PADDING_TOP;
 
 
+    // Draw planet
     fill(paletteLerp([
       ['white', 0],
       ['orange', 5],
@@ -45,10 +46,24 @@ function draw() {
     strokeWeight(STROKE_OF_PLANETS);
     circle(positionByHorizontal, positionByVerticaly, boardgame.games);
 
+    // Draw planet text
     fill("rgb(33,30,226)");
     stroke("rgb(222,164,232)");
     textSize(10);
     text(boardgame.name, positionByHorizontal, positionByVerticaly + boardgame.games + STROKE_OF_PLANETS);
+
+    // Handle click on planet
+    // TODO: textBounds()
+    // rect(positionByHorizontal, positionByVerticaly, boardgame.games, boardgame.games);
+    if (
+      mouseIsPressed
+      && mouseX > (positionByHorizontal - (boardgame.games / 2))
+      && mouseX < (positionByHorizontal + (boardgame.games / 2))
+      && mouseY > (positionByVerticaly - (boardgame.games / 2))
+      && mouseY < (positionByVerticaly + (boardgame.games / 2))
+    ) {
+      console.log('Es', boardgame.name);
+    }
   })
 
   // fill("yellow");
