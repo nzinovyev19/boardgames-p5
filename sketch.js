@@ -1,7 +1,27 @@
-let boardgames;
+function defineModal() {
+  const modal = select('#modal');
+  const modalTitle = select('#modal-title');
+  const modalGames = select('#modal-games');
+  const modalDescription = select('#modal-description');
+  const modalCloseButton = select('#modal-close');
+  modalCloseButton.mousePressed(modalClose);
 
-// const PALITRE_COLOR_BY_GENRE = {
-// }
+
+  function modalOpen({ name, games, description }) {
+    modalTitle.elt.innerHTML = name;
+    modalGames.elt.innerHTML = games;
+    modalDescription.elt.innerHTML = description;
+
+    modal.elt.style.display = 'flex';
+  }
+
+  function modalClose() {
+    modal.elt.style.display = 'none';
+  }
+
+  return { modal, modalTitle, modalDescription, modalGames, modalCloseButton, modalClose, modalOpen };
+};
+
 
 const ROWS = 3;
 const COLUMNS = 3;
@@ -10,12 +30,16 @@ const STROKE_OF_PLANETS = 5;
 const PADDING_TOP = 150;
 const PADDING_LEFT = 100;
 
+let boardgames;
+let modalOpen;
+
 function preload() {
   boardgames = loadJSON('/boardgames.json');
 }
 
 function setup() {
   createCanvas(600, 600);
+  ({ modalOpen } = defineModal());
 }
 
 function draw() {
@@ -62,7 +86,7 @@ function draw() {
       && mouseY > (positionByVerticaly - (boardgame.games / 2))
       && mouseY < (positionByVerticaly + (boardgame.games / 2))
     ) {
-      console.log('Es', boardgame.name);
+      modalOpen({ name: boardgame.name, games: boardgame.games, description: boardgame.description });
     }
   })
 
@@ -85,7 +109,3 @@ function draw() {
   // rotate(QUARTER_PI / 100);
   text("🚀", frameCount % height, frameCount % width);
 }
-
-/**
- *
- */
