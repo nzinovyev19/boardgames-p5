@@ -1,45 +1,17 @@
-function defineModal() {
-  const modal = select('#modal');
-  const modalTitle = select('#modal-title');
-  const modalGames = select('#modal-games');
-  const modalDescription = select('#modal-description');
-  const modalCloseButton = select('#modal-close');
-  modalCloseButton.mousePressed(modalClose);
-
-
-  function modalOpen({ name, games, description }) {
-    modalTitle.elt.innerHTML = name;
-    modalGames.elt.innerHTML = games;
-    modalDescription.elt.innerHTML = description;
-
-    modal.elt.style.display = 'flex';
-  }
-
-  function modalClose() {
-    modal.elt.style.display = 'none';
-  }
-
-  return { modal, modalTitle, modalDescription, modalGames, modalCloseButton, modalClose, modalOpen };
-};
-
-
-const ROWS = 3;
-const COLUMNS = 3;
-
-const STROKE_OF_PLANETS = 5;
-const PADDING_TOP = 150;
-const PADDING_LEFT = 100;
-
 let boardgames;
-let modalOpen;
+let planets = [];
 
 function preload() {
   boardgames = loadJSON('/boardgames.json');
 }
 
 function setup() {
-  createCanvas(600, 600);
+  createCanvas(windowWidth, windowHeight);
   ({ modalOpen } = defineModal());
+
+  Object.values(boardgames).map((boardgame, i) => {
+    planets.push(createPlanet(boardgame, i));
+  })
 }
 
 function draw() {
@@ -51,44 +23,77 @@ function draw() {
   textAlign(CENTER);
   text("Boardgames galaxy", width / 2, 50);
 
-  Object.values(boardgames).map((boardgame, i) => {
+  planets.forEach(planet => {
+    updatePlanet(planet);
+    drawPlanet(planet);
+    // checkPlanetClick(planet);
+  });
 
-    const gapInRow = width / COLUMNS;
-    const gapInColumn = (height / 5);
+  // Object.values(boardgames).map((boardgame, i) => {
 
-    const positionByHorizontal = i * gapInRow % width + PADDING_LEFT;
-    const positionByVerticaly = Math.floor(i / ROWS) * gapInColumn + PADDING_TOP;
+  //   // const gapInRow = width / COLUMNS;
+  //   // const gapInColumn = (height / 5);
+
+  //   // const positionByHorizontal = i * gapInRow % width + PADDING_LEFT;
+  //   // const positionByVerticaly = Math.floor(i / ROWS) * gapInColumn + PADDING_TOP;
+  //   // let speedY = random(-2, 2);
+  //   // let speedX = random(-2, 2);
+
+  //   // let x = positionByHorizontal;
+  //   // let y = positionByVerticaly;
+
+  //   // Draw planet
+  //   // fill(paletteLerp([
+  //   //   ['white', 0],
+  //   //   ['orange', 5],
+  //   //   ['red', 10]
+  //   // ], boardgame.difficult));
+  //   // stroke("orange");
+  //   // strokeWeight(STROKE_OF_PLANETS);
+
+  //   // x += positionByHorizontal + speedX;
+  //   // y += positionByVerticaly + speedY;
+  //   // circle(x, y, boardgame.games);
+  //   // // Keep the circle within the canvas boundaries
+  //   // if (x > positionByHorizontal - 100 || x < 25) {
+  //   //   speedX *= -1;
+  //   // }
+  //   // if (y > height - 25 || y < 25) {
+  //   //   speedY *= -1;
+  //   // }
+
+  //   let { x, y, speedX, speedY } = definePlanet(boardgame, i);
+  //   x += speedX;
+  //   y += speedY;
+  //   if (x > width - 100 || x < 25) {
+  //     speedX *= -1;
+  //   }
+  //   if (y > height - 25 || y < 25) {
+  //     speedY *= -1;
+  //   }
+  //   // circle(x, y, boardgame.games);
+  //   // Keep the circle within the canvas boundaries
 
 
-    // Draw planet
-    fill(paletteLerp([
-      ['white', 0],
-      ['orange', 5],
-      ['red', 10]
-    ], boardgame.difficult));
-    stroke("orange");
-    strokeWeight(STROKE_OF_PLANETS);
-    circle(positionByHorizontal, positionByVerticaly, boardgame.games);
+  //   // Draw planet text
+  //   // fill("rgb(33,30,226)");
+  //   // stroke("rgb(222,164,232)");
+  //   // textSize(10);
+  //   // text(boardgame.name, positionByHorizontal, positionByVerticaly + boardgame.games + STROKE_OF_PLANETS);
 
-    // Draw planet text
-    fill("rgb(33,30,226)");
-    stroke("rgb(222,164,232)");
-    textSize(10);
-    text(boardgame.name, positionByHorizontal, positionByVerticaly + boardgame.games + STROKE_OF_PLANETS);
-
-    // Handle click on planet
-    // TODO: textBounds()
-    // rect(positionByHorizontal, positionByVerticaly, boardgame.games, boardgame.games);
-    if (
-      mouseIsPressed
-      && mouseX > (positionByHorizontal - (boardgame.games / 2))
-      && mouseX < (positionByHorizontal + (boardgame.games / 2))
-      && mouseY > (positionByVerticaly - (boardgame.games / 2))
-      && mouseY < (positionByVerticaly + (boardgame.games / 2))
-    ) {
-      modalOpen({ name: boardgame.name, games: boardgame.games, description: boardgame.description });
-    }
-  })
+  //   // Handle click on planet
+  //   // TODO: textBounds()
+  //   // rect(positionByHorizontal, positionByVerticaly, boardgame.games, boardgame.games);
+  //   // if (
+  //   //   mouseIsPressed
+  //   //   && mouseX > (positionByHorizontal - (boardgame.games / 2))
+  //   //   && mouseX < (positionByHorizontal + (boardgame.games / 2))
+  //   //   && mouseY > (positionByVerticaly - (boardgame.games / 2))
+  //   //   && mouseY < (positionByVerticaly + (boardgame.games / 2))
+  //   // ) {
+  //   //   modalOpen({ name: boardgame.name, games: boardgame.games, description: boardgame.description });
+  //   // }
+  // })
 
   // fill("yellow");
   // stroke("orange");
@@ -107,5 +112,9 @@ function draw() {
 
   textSize(30);
   // rotate(QUARTER_PI / 100);
-  text("🚀", frameCount % height, frameCount % width);
+  text("🚀", frameCount % windowWidth, frameCount % windowHeight);
+}
+
+function windowResized() {
+  resizeCanvas(windowWidth, windowHeight);
 }

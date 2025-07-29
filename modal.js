@@ -1,16 +1,16 @@
-export function defineModal() {
+function defineModal() {
   const modal = select('#modal');
   const modalTitle = select('#modal-title');
   const modalGames = select('#modal-games');
   const modalDescription = select('#modal-description');
   const modalCloseButton = select('#modal-close');
-  modalCloseButton.mousePressed(closeModal);
+  modalCloseButton.mousePressed(modalClose);
 
 
   function modalOpen({ name, games, description }) {
-    modalTitle.elt.innerHtml = name;
-    modalGames.elt.innerHtml = games;
-    modalDescription.elt.innerHtml = description;
+    modalTitle.elt.innerHTML = name;
+    modalGames.elt.innerHTML = games;
+    modalDescription.elt.innerHTML = description;
 
     modal.elt.style.display = 'flex';
   }
