@@ -93,3 +93,16 @@ function updatePlanet(planet) {
   //   planet.speedY += random(-0.5, 0.5);
   // }
 }
+
+function checkPlanetClick(planet, modalOpen) {
+  if (
+    mouseIsPressed
+    && dist(mouseX, mouseY, planet.x, planet.y) < planet.radius / 2
+  ) {
+    modalOpen({
+      name: planet.boardgame.name,
+      games: planet.boardgame.games,
+      description: planet.boardgame.description
+    });
+  }
+}
