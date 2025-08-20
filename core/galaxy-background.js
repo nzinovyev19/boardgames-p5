@@ -115,6 +115,12 @@ class GalaxyBackground {
   draw() {
     // Рисуем фон
     background("rgba(18,15,15,0.17)");
+    // Рисуем тайтлы
+    fill("rgb(33,30,226)");
+    stroke("rgb(222,164,232)");
+    textSize(30);
+    textAlign(CENTER);
+    text("Boardgames galaxy", width / 2, 50);
 
     // Рисуем туманности
     this.drawNebulae();

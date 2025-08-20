@@ -1,5 +1,7 @@
 let boardgames;
 let planets = [];
+let uiManager;
+let viewManager;
 let galaxyBackground;
 
 function preload() {
@@ -12,27 +14,27 @@ function setup() {
 
   galaxyBackground = new GalaxyBackground();
 
-  Object.values(boardgames).map((boardgame, i) => {
-    planets.push(createPlanet(boardgame, i));
-  })
+  // Инициализация менеджеров
+  viewManager = new ViewManager(boardgames);
+  uiManager = new UIManager(viewManager);
 
+  // Object.values(boardgames).map((boardgame, i) => {
+  //   // planets.push(createPlanet(boardgame, i))
+  //   viewManager.planets.push(createPlanet(boardgame, i));
+  // })
 }
 
 function draw() {
   galaxyBackground.update();
   galaxyBackground.draw();
 
-  fill("rgb(33,30,226)");
-  stroke("rgb(222,164,232)");
-  textSize(30);
-  textAlign(CENTER);
-  text("Boardgames galaxy", width / 2, 50);
-
-  planets.forEach(planet => {
-    updatePlanet(planet);
-    drawPlanet(planet);
-    checkPlanetClick(planet, modalOpen);
-  });
+  viewManager.update(planets);
+  viewManager.draw(planets);
+  // planets.forEach(planet => {
+  //   updatePlanet(planet);
+  //   drawPlanet(planet);
+  //   checkPlanetClick(planet, modalOpen);
+  // });
 
   textSize(30);
   text("🚀", frameCount % windowWidth, frameCount % windowHeight);
