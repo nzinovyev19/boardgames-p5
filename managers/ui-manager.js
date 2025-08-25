@@ -11,8 +11,8 @@ class UIManager {
     controlsDiv.className = 'fixed top-4 right-4 z-50';
     controlsDiv.innerHTML = `
       <div class="bg-gray-900/80 backdrop-blur-sm rounded-lg p-2 border border-purple-500/30">
-        <button id="btn-2d" class="view-btn px-4 py-2 rounded-md">2D Grid</button>
-        <button id="btn-3d" class="view-btn px-4 py-2 rounded-md">3D Solar</button>
+        <button id="btn-2d" class="dark:text-white view-btn px-4 py-2 rounded-md">2D Grid</button>
+        <button id="btn-3d" class="dark:text-white view-btn px-4 py-2 rounded-md">3D Solar</button>
       </div>
     `;
 

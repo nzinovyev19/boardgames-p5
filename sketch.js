@@ -4,6 +4,10 @@ let uiManager;
 let viewManager;
 let galaxyBackground;
 
+// TODO: прибрать закомменченный код
+// TODO: подобраться более красивое оформления шрифтов (либо прям сюда установить нормальный шрифт)
+// TODO: поправить реализацию сетки в 2d рендере
+
 function preload() {
   boardgames = loadJSON('/boardgames.json');
 }
