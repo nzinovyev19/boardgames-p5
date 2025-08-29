@@ -1,3 +1,5 @@
+const STROKE_OF_PLANETS = 5;
+
 class Renderer3D extends BaseRenderer {
   constructor() {
     super();

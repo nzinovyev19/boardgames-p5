@@ -1,10 +1,8 @@
 let boardgames;
 let planets = [];
-let uiManager;
 let viewManager;
 let galaxyBackground;
 
-// TODO: прибрать закомменченный код
 // TODO: подобраться более красивое оформления шрифтов (либо прям сюда установить нормальный шрифт)
 // TODO: поправить реализацию сетки в 2d рендере
 
@@ -18,14 +16,10 @@ function setup() {
 
   galaxyBackground = new GalaxyBackground();
 
-  // Инициализация менеджеров
+  // Отвечает за тип текущего рендерера и логику их переключения
   viewManager = new ViewManager(boardgames);
+  // Отвечает за визуальную часть переключения, рендерит кнопки и вещает на них методы из viewManager
   uiManager = new UIManager(viewManager);
-
-  // Object.values(boardgames).map((boardgame, i) => {
-  //   // planets.push(createPlanet(boardgame, i))
-  //   viewManager.planets.push(createPlanet(boardgame, i));
-  // })
 }
 
 function draw() {
@@ -34,11 +28,6 @@ function draw() {
 
   viewManager.update(planets);
   viewManager.draw(planets);
-  // planets.forEach(planet => {
-  //   updatePlanet(planet);
-  //   drawPlanet(planet);
-  //   checkPlanetClick(planet, modalOpen);
-  // });
 
   textSize(30);
   text("🚀", frameCount % windowWidth, frameCount % windowHeight);
