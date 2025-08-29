@@ -7,23 +7,36 @@ class Renderer2D extends BaseRenderer {
   }
 
   update(planets) {
+    const planetsCount = planets.length;
+
+    // Автоматически подбираем сетку (простая логика)
+    const cols = Math.ceil(Math.sqrt(planetsCount));
+    const rows = Math.ceil(planetsCount / cols);
+
+    // Размеры ячеек с отступами
+    const paddingHoriontal = 100;
+    const paddingVertical = 20;
+    const cellWidth = (width - paddingHoriontal * 2) / cols;
+    const cellHeight = (height - paddingVertical * 2) / rows;
+
+    // Центрируем сетку
+    const gridWidth = cols * cellWidth;
+    const gridHeight = rows * cellHeight;
+    const startX = (width - gridWidth) / 2;
+    const startY = (height - gridHeight) / 2;
+
     planets.forEach((planet, i) => {
-      // Сетка 2D позиций
-      const gapX = width / this.gridCols;
-      const gapY = height / this.gridRows;
-      const paddingX = 100;
-      const paddingY = 150;
+      const col = i % cols;
+      const row = Math.floor(i / cols);
 
-      const targetX = (i % this.gridCols) * gapX + paddingX;
-      const targetY = Math.floor(i / this.gridCols) * gapY + paddingY;
-
-      planet.screenX = targetX;
-      planet.screenY = targetY;
-      planet.z = 0; // Все на одном уровне в 2D
+      // Центр каждой ячейки
+      planet.screenX = startX + (col + 0.5) * cellWidth;
+      planet.screenY = startY + (row + 0.5) * cellHeight;
+      planet.z = 0;
 
       // Легкое покачивание
-      planet.screenX += Math.sin(frameCount * 0.01 + i) * 5;
-      planet.screenY += Math.cos(frameCount * 0.015 + i) * 3;
+      planet.screenX += Math.sin(frameCount * 0.01 + i) * 3;
+      planet.screenY += Math.cos(frameCount * 0.015 + i) * 2;
     });
   }
 
