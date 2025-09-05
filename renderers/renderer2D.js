@@ -55,14 +55,14 @@ class Renderer2D extends BaseRenderer {
 
     // 2D стиль без эффектов глубины
     fill(planetColor);
-    stroke("orange");
+    stroke(UI_PALETTE.highlight);
     strokeWeight(3);
     circle(planet.screenX, planet.screenY, planet.radius);
 
     // Название
-    fill("rgb(33,30,226)");
-    stroke("rgb(222,164,232)");
-    textSize(10);
+    fill(UI_PALETTE.primary);
+    strokeWeight(0);
+    textSize(16);
     textAlign(CENTER);
     text(planet.boardgame.name,
       planet.screenX,

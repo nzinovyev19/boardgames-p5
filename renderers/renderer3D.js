@@ -49,16 +49,16 @@ class Renderer3D extends BaseRenderer {
     const currentFill = color(red(planetColor), green(planetColor), blue(planetColor), brightness);
     fill(currentFill);
 
-    stroke("orange");
+    stroke(UI_PALETTE.highlight);
     strokeWeight(STROKE_OF_PLANETS * depthScale);
 
     circle(planet.screenX, planet.screenY, planetSize);
 
     // Название планеты
-    fill("rgb(33,30,226)");
-    stroke("rgb(222,164,232)");
-    textSize(8 * depthScale);
+    fill(UI_PALETTE.primary);
+    textSize(12 * depthScale);
     textAlign(CENTER);
+    strokeWeight(0);
     text(planet.boardgame.name,
       planet.screenX,
       planet.screenY + planetSize/2 + STROKE_OF_PLANETS + 15

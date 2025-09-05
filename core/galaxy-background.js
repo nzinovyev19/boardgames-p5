@@ -114,9 +114,9 @@ class GalaxyBackground {
 
   draw() {
     // Рисуем фон
-    background("rgba(18,15,15,0.17)");
+    background(UI_PALETTE.surface);
     // Рисуем тайтлы
-    fill("rgb(33,30,226)");
+    fill("rgb(255, 255, 255)");
     stroke("rgb(222,164,232)");
     textSize(30);
     textAlign(CENTER);
