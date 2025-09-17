@@ -14,12 +14,80 @@
   </head>
 
   <body>
-    <div id="modal" style="display: none;">
-      <div id="modal-header">
-        <h1 id="modal-title">BoardGame name</h1><span id="modal-games">Games: count</span>
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 opacity-0 pointer-events-none transition-all duration-300">
+      <div class="bg-gray-900 border border-blue-400 rounded-lg shadow-2xl max-w-2xl w-full mx-4 max-h-[90vh] overflow-hidden">
+
+        <!-- Header -->
+        <div class="bg-gradient-to-r from-blue-900 to-purple-900 px-6 py-4 border-b border-blue-400">
+          <div class="flex justify-between items-start">
+            <div>
+              <h1 id="modal-title" class="text-2xl font-bold text-blue-100 font-['Exo_2'] mb-1">BoardGame name</h1>
+              <div class="flex gap-4 text-sm">
+                <span id="modal-games" class="text-amber-400 font-semibold">Игр сыграно: 0</span>
+                <span id="modal-difficulty" class="text-blue-300">Сложность: 0/10</span>
+              </div>
+            </div>
+            <button id="modal-close" class="text-gray-400 hover:text-white transition-colors text-2xl leading-none">
+              ×
+            </button>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="p-6 overflow-y-auto max-h-96">
+
+          <!-- Genres -->
+          <div class="mb-4">
+            <h3 class="text-blue-300 font-semibold mb-2 text-sm uppercase tracking-wide">Жанры</h3>
+            <div id="modal-genres" class="flex flex-wrap gap-2">
+              <!-- Жанры будут добавляться динамически -->
+            </div>
+          </div>
+
+          <!-- Description -->
+          <div class="mb-6">
+            <h3 class="text-blue-300 font-semibold mb-2 text-sm uppercase tracking-wide">Описание</h3>
+            <p id="modal-description" class="text-gray-300 leading-relaxed">My opinion about this game</p>
+          </div>
+
+          <!-- Game Counter -->
+          <div class="mb-6 bg-gray-800 border border-gray-700 rounded-lg p-4">
+            <h3 class="text-blue-300 font-semibold mb-3 text-sm uppercase tracking-wide">Счётчик игр</h3>
+            <div class="flex items-center justify-between">
+              <span class="text-gray-300">Сыграно партий:</span>
+              <div class="flex items-center gap-3">
+                <button id="decrease-games" class="w-8 h-8 bg-red-600 hover:bg-red-500 text-white rounded-full flex items-center justify-center transition-colors">
+                  −
+                </button>
+                <span id="games-counter" class="text-xl font-bold text-amber-400 min-w-8 text-center">0</span>
+                <button id="increase-games" class="w-8 h-8 bg-green-600 hover:bg-green-500 text-white rounded-full flex items-center justify-center transition-colors">
+                  +
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- History -->
+          <div>
+            <h3 class="text-blue-300 font-semibold mb-3 text-sm uppercase tracking-wide">История игр</h3>
+            <div id="modal-history" class="space-y-2 max-h-40 overflow-y-auto">
+              <!-- История будет добавляться динамически -->
+            </div>
+            <div id="no-history" class="text-gray-500 italic text-center py-4" style="display: none;">
+              Пока не сыграно ни одной партии
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="bg-gray-800 px-6 py-4 border-t border-gray-700 flex justify-end">
+          <button id="modal-ok" class="px-6 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors font-semibold">
+            Закрыть
+          </button>
+        </div>
+
       </div>
-      <p id="modal-description">My opinion about this game</p>
-      <button id="modal-close">Ok</button>
     </div>
     <script src="core/modal.js"></script>
     <script src="core/planet.js"></script>

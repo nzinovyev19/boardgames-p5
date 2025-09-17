@@ -15,11 +15,7 @@ class BaseRenderer {
     planets.forEach(planet => {
       if (dist(mouseX, mouseY, planet.screenX, planet.screenY) < planet.radius / 2) {
         if (mouseIsPressed) {
-          modalOpen({
-            name: planet.boardgame.name,
-            games: planet.boardgame.games,
-            description: planet.boardgame.description
-          });
+          modalOpen(planet.boardgame);
         }
       }
     });
