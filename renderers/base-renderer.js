@@ -13,7 +13,7 @@ class BaseRenderer {
 
   handleClick(planets, mouseX, mouseY, modalOpen) {
     planets.forEach(planet => {
-      if (dist(mouseX, mouseY, planet.screenX, planet.screenY) < planet.radius / 2) {
+      if (dist(mouseX, mouseY, planet.screenX, planet.screenY) < (planet.radius / 2) && modal) {
         if (mouseIsPressed) {
           modalOpen(planet.boardgame);
         }
