@@ -49,13 +49,13 @@ class Renderer3D extends BaseRenderer {
     const currentFill = color(red(planetColor), green(planetColor), blue(planetColor), brightness);
     fill(currentFill);
 
-    stroke(UI_PALETTE.highlight);
+    stroke(PALETTE.accent.primary);
     strokeWeight(STROKE_OF_PLANETS * depthScale);
 
     circle(planet.screenX, planet.screenY, planetSize);
 
     // Название планеты
-    fill(UI_PALETTE.primary);
+    fill(PALETTE.primary.text);
     textSize(12 * depthScale);
     textAlign(CENTER);
     strokeWeight(0);

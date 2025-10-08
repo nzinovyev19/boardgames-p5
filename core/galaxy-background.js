@@ -114,10 +114,10 @@ class GalaxyBackground {
 
   draw() {
     // Рисуем фон
-    background(UI_PALETTE.surface);
+    background(PALETTE.background.primary);
     // Рисуем тайтлы
-    fill("rgb(255, 255, 255)");
-    stroke("rgb(222,164,232)");
+    fill(PALETTE.space.stars);
+    stroke(PALETTE.space.title);
     textSize(30);
     textAlign(CENTER);
     text("Boardgames galaxy", width / 2, 50);

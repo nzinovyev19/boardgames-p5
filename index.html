@@ -47,7 +47,7 @@
           <!-- Description -->
           <div class="mb-6">
             <h3 class="text-blue-300 font-semibold mb-2 text-sm uppercase tracking-wide">Описание</h3>
-            <p id="modal-description" class="text-gray-300 leading-relaxed">My opinion about this game</p>
+            <p id="modal-description" class="text-gray-300 leading-relaxed"></p>
           </div>
 
           <!-- Add Game Form -->
@@ -110,21 +110,23 @@
               📝 Добавить с деталями
             </button>
           </div>
+
+          <!-- History -->
+          <div>
+            <h3 class="text-blue-300 font-semibold mb-3 text-sm uppercase tracking-wide">
+              Последние игры
+              <span id="history-count" class="text-xs text-gray-400 font-normal">(показано 5 из 0)</span>
+            </h3>
+            <div id="modal-history" class="space-y-2 max-h-40 overflow-y-auto">
+              <!-- История будет добавляться динамически -->
+            </div>
+
+            <div id="no-history" class="text-gray-500 italic text-center py-4" style="display: none;">
+              Пока не сыграно ни одной партии
+            </div>
+          </div>
         </div>
 
-        <!-- History -->
-        <div>
-          <h3 class="text-blue-300 font-semibold mb-3 text-sm uppercase tracking-wide">
-            Последние игры
-            <span id="history-count" class="text-xs text-gray-400 font-normal">(показано 5 из 0)</span>
-          </h3>
-          <div id="modal-history" class="space-y-2 max-h-40 overflow-y-auto">
-            <!-- История будет добавляться динамически -->
-          </div>
-          <div id="no-history" class="text-gray-500 italic text-center py-4" style="display: none;">
-            Пока не сыграно ни одной партии
-          </div>
-        </div>
 
         <!-- Footer -->
         <div class="bg-gray-800 px-6 py-4 border-t border-gray-700 flex justify-end">
@@ -135,6 +137,7 @@
 
       </div>
     </div>
+    <script src="colors/palette.js"></script>
     <script src="core/modal.js"></script>
     <script src="core/planet.js"></script>
     <script src="core/galaxy-background.js"></script>

@@ -55,12 +55,12 @@ class Renderer2D extends BaseRenderer {
 
     // 2D стиль без эффектов глубины
     fill(planetColor);
-    stroke(UI_PALETTE.highlight);
+    stroke(PALETTE.accent.primary);
     strokeWeight(3);
     circle(planet.screenX, planet.screenY, planet.radius);
 
     // Название
-    fill(UI_PALETTE.primary);
+    fill(PALETTE.primary.text);
     strokeWeight(0);
     textSize(16);
     textAlign(CENTER);
