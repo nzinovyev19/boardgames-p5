@@ -2,6 +2,13 @@ class UIManager {
   constructor(viewManager) {
     this.viewManager = viewManager;
     this.createUI();
+    
+    // Подписываемся на изменения view
+    storageManager.subscribe((event, data) => {
+      if (event === 'viewChanged') {
+        this.updateActiveButton();
+      }
+    });
   }
 
   createUI() {

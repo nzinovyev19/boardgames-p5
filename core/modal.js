@@ -152,7 +152,12 @@ function defineModal() {
     }
 
     updateDisplay();
-    console.log('Удалена последняя игра');
+
+    // Сохраняем изменения через storage-manager
+    storageManager.updateGame(currentGame.name, {
+      games: currentGame.games,
+      history: currentGame.history
+    });
   }
 
   function toggleForm() {
@@ -234,10 +239,11 @@ function defineModal() {
 
     updateDisplay();
 
-    // Сохраняем в localStorage (когда добавим)
-    // saveToLocalStorage();
-
-    console.log('Добавлена новая игра:', session);
+    // Сохраняем изменения через storage-manager
+    storageManager.updateGame(currentGame.name, {
+      games: currentGame.games,
+      history: currentGame.history
+    });
   }
 
   function updateDisplay() {
