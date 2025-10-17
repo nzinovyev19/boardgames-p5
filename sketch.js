@@ -5,12 +5,8 @@ let viewManager;
 let galaxyBackground;
 
 /*
-* FIXME: стоит довести до выложенного состояния (можно ли для этого использовать github?
-* Кажется, через github-pages раньше вполне было можно)
-* FIXME: реализовать сохранeние в local-storage
-*
 * TODO: сделать Modal также классовым для единообразия
-* TODO: подумать о переиспользовании палетк в tailwind
+* TODO: подумать о переиспользовании палетки в tailwind
 * TODO: можно выводить планеты в 3D-рендере по радиусу (маленькие планеты ближе к центру, большие дальше)
 * TODO: аи-идея - управление камерой с помощью мыши для исследования "игровой вселенной"
 * TODO: надо лучше продумать логику работу boardgame.games и boardgame.history полей - сделать их независимыми
@@ -25,17 +21,17 @@ function setup() {
   textFont(font);
 
   createCanvas(windowWidth, windowHeight);
-  
+
   // Загружаем игры через storage-manager
   boardgames = storageManager.loadGames();
-  
+
   // Если localStorage пуст, загружаем из boardgames.json
   if (boardgames.length === 0) {
     // Асинхронная загрузка для инициализации
     loadJSON('/boardgames.json', (externalGames) => {
       storageManager.initializeFromExternal(externalGames);
       boardgames = storageManager.getAllGames();
-      
+
       // Пересоздаем ViewManager с новыми данными
       viewManager = new ViewManager(boardgames);
       uiManager = new UIManager(viewManager);
