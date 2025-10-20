@@ -5,6 +5,8 @@ let viewManager;
 let galaxyBackground;
 
 /*
+* FIXME: добавить логику создания новых игры
+*
 * TODO: сделать Modal также классовым для единообразия
 * TODO: подумать о переиспользовании палетки в tailwind
 * TODO: можно выводить планеты в 3D-рендере по радиусу (маленькие планеты ближе к центру, большие дальше)
@@ -28,7 +30,7 @@ function setup() {
   // Если localStorage пуст, загружаем из boardgames.json
   if (boardgames.length === 0) {
     // Асинхронная загрузка для инициализации
-    loadJSON('/boardgames.json', (externalGames) => {
+    loadJSON('./boardgames.json', (externalGames) => {
       storageManager.initializeFromExternal(externalGames);
       boardgames = storageManager.getAllGames();
 
